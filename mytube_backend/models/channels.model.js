@@ -6,8 +6,9 @@ import { Schema } from "mongoose";
 
 const channelSchema= new Schema({
 chanbelName: String,
-subscribers:{type:Number,default:0},
-vidios:[{type:Schema.Types.ObjectId,ref:"Video"}],
+follow:{type:Number,default:0},
+project: [{type:Schema.Types.ObjectId,ref:"Projects"}],
+
 createdAt: { type: Date, default: Date.now }
 
 })

@@ -6,7 +6,7 @@ import { verifyToken } from "../Middleware/verifyToken.js";
 
 
 export function getCommentsRoutes(app) {
-app.post('/api/comments', verifyToken,addComment )
+app.post('/api/comments',addComment )
 
 }
 

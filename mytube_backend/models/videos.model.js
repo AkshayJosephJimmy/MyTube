@@ -6,10 +6,10 @@ const videoSchema = new mongoose.Schema({
     title: String,
   description: String,
   videoUrl: String,
-  thumbnailUrl: String,
   channelName: String,
-  views: { type: Number, default: 0 },
-  likesCount: { type: Number, default: 0 },
+  channelId: { type: mongoose.Schema.Types.ObjectId, ref: "Channel" },
+  projectId: { type: mongoose.Schema.Types.ObjectId, ref: "Projects" },
+  
   
 });
 
