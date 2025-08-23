@@ -1,64 +1,34 @@
 import React, { use } from 'react'
 import SideBar from './SideBar'
-import Thumbnail from './Thumbnail'
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchVideos } from '../utils/videoSlice';
-import FilterBar from './FilterBar.jsx';
-import { useLocation } from 'react-router-dom';
-import { SideBarContext } from '../utils/toggelContext.jsx';
-import { useEffect } from 'react';
-import { useContext } from 'react';
-import { useState } from 'react';
-import { setUser } from '../utils/AuthContext.jsx';
+import Modal from './Modal';
+import { set } from 'mongoose';
+
 
 
 
 
 function Home() {
+  const [isOpen, setIsOpen] = React.useState(false);
+  function handleCLicl() {
+  console.log("Button clicked");
+  setIsOpen(!isOpen);
+  console.log(isOpen)
+  
+  // You can add more functionality here, like navigating to a different page or opening a modal
+}
 
-//const api_key='AIzaSyChybMFGahJyBPOveab8QHXw9m9MMVZ7-w';
-//const api_url=`https://www.googleapis.com/youtube/v3/videos?part=snippet,statistics&chart=mostPopular&maxResults=20&regionCode=IN&key=${api_key}`;
-const dispatch=useDispatch();
-const {videos,loading,error}=useSelector((state)=>state.video);
- const [selectedFilter, setSelectedFilter] = React.useState(null);
- const location = useLocation();
- React.useEffect(() => {
-  if (location.pathname === "/") {
-    setSelectedFilter(null); // Reset filter when user navigates to Home
-  }
-}, [location.pathname]);
-
-React.useEffect(() => {
-dispatch(fetchVideos());
+return(
+<div>
+  <button className='bg-amber-300 border-amber-300' onClick={handleCLicl}>Add Project</button>
    
-
-},[dispatch]);
- const filteredVideos = selectedFilter
-    ? videos.filter((video) =>
-        video.title.toLowerCase().includes(selectedFilter.toLowerCase())
-      )
-    : videos;
- if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error loading videos</p>;
-
+  <Modal isOpen={isOpen} setIsOpen={setIsOpen}>
     
-  return (
-    <div className='flex '>
-        
-        
-        <SideBar />
-            <div className='flex flex-wrap gap-2'>
-              <div className='flex flex-col w-full' >
+  </Modal>
 
-                      <FilterBar selected={selectedFilter} onSelect={setSelectedFilter} />
+</div>
 
-      
-              </div>
-      {filteredVideos.map((video)=> <Thumbnail key={video._id} video={video} />)}
-            </div>
-              
-    </div>
-  )
+)
+
 }
 
 export default Home
