@@ -12,8 +12,9 @@ projectModel.create(req.body)
 })
 .catch((error)=>{
     res.status(500).json({
-        message: "Error creating project",
+        message: "Error creating project AV1",
         error: error.message
     });
 });
+console.log(res)
  }

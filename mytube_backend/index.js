@@ -6,6 +6,8 @@ import { usersApi } from './routes/users.routes.js';
 import { getSigninRoutes } from './routes/signin.routes.js';
 import { getSearchRoutes } from './routes/search.routes.js';
 import { getCommentsRoutes } from './routes/comments.route.js';
+import projectApi from './routes/projects.route.js';
+
 
 
 const app = express();
@@ -28,6 +30,8 @@ usersApi(app);
 getSigninRoutes(app);
 getSearchRoutes(app);
 getCommentsRoutes(app);
+projectApi(app);
+
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
