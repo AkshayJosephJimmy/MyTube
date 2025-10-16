@@ -1,9 +1,9 @@
-#MyTube
+# MyTube
 
 A minimal YouTube Clone built with React.
 This project focuses on the core layout and functionality — fetching and displaying videos, viewing video details, and simple navigation.
 
-##Features
+## Features
 
 1.Home page showing a list of videos
 
@@ -13,7 +13,7 @@ This project focuses on the core layout and functionality — fetching and displ
 
 4.Basic routing with React Router
 
-##Tech Stack
+## Tech Stack
 
 1.React (Frontend UI)
 
